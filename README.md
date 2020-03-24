@@ -2,6 +2,7 @@
 
 [Production Server](https://openfisca-canada.herokuapp.com/)
 
+![wombat](https://raw.githubusercontent.com/wombatwombat/art/master/wombat.jpg)
 
 The country whose law is modelled here has a very simple tax and benefit system.
 
