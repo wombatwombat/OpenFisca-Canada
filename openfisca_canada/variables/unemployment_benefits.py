@@ -10,6 +10,7 @@ from openfisca_core.model_api import *
 from openfisca_canada.entities import *
 
 import datetime
+import numpy as np
 today_date_and_time = np.datetime64(datetime.datetime.now())
 today = today_date_and_time.astype('datetime64[D]')
 
@@ -32,37 +33,65 @@ class last_employment_insurance_payment_date(Variable):
 class hours_worked_in_last_52_weeks(Variable):
     value_type = float
     entity = Person
-    definition = YEAR
+    definition_period = YEAR
     label = 'Asks how many hours the claimaint has worked in the last 52 weeks.'
+
+
+class person_has_worked_minimum_hours(Variable):
+    value_type = bool
+    entity = Person
+    definition_period = ETERNITY
+    label = 'determines whether the person has worked the minimum required' \
+            ' hours in the past 52 weeks.'
+
+    def formula(people, period, parameters):
+        hours_worked = people('hours_worked_in_last_52_weeks', period)
+        condition_minimum_hours_worked = hours_worked >= 600
+        return where(condition_minimum_hours_worked, True, False)
+
+
+class date_52_weeks_ago(Variable):
+    value_type = date
+    entity = Person
+    definition_period = ETERNITY
+    label = 'Finds the date 52 weeks before today, for purposes of determining' \
+            ' the hours worked in the last 52 weeks.'
+
+    def formula(people, period, parameters):
+        todays_date = today
+        fifty_two_weeks_before_today = todays_date - np.timedelta64(52, 'W')
+        return fifty_two_weeks_before_today
 
 
 class has_record_of_employment(Variable):
     value_type = bool
     entity = Person
-    definition = ETERNITY
+    definition_period = ETERNITY
     label = 'Asks whether the person has a previous record of employment.'
 
 
 class current_earnings(Variable):
     value_type = float
     entity = Person
-    definition = YEAR
+    definition_period = YEAR
     label = 'Asks for the existing weekly earnings of the applicant.'
+
 
 class regular_earnings(Variable):
     value_type = float
     entity = Person
-    definition = YEAR
+    definition_period = YEAR
     label = 'Asks for the regular weekly earnings of the applicant.'
+
 
 class potential_weekly_benefits(Variable):
     value_type = float
     entity = Person
-    definition = ETERNITY
-    label 'Defines the maximum weekly benefit for the applicant.'
+    definition_period = ETERNITY
+    label = 'Defines the maximum weekly benefit for the applicant.'
 
     def formula(person, period, parameters):
-        current_earnings = person(current_earnings, period)
+        current_earnings = person('current_earnings', period)
         benefit_earnings = current_earnings * 0.55
         condition_maximum_benefit = (current_earnings > 573)
         return where(condition_maximum_benefit, 573, benefit_earnings)
@@ -71,24 +100,41 @@ class potential_weekly_benefits(Variable):
 class has_medical_certificate(Variable):
     value_type = bool
     entity = Person
-    definition = ETERNITY
+    definition_period = ETERNITY
     label = 'asks whether the applicant has a current medical certificate.' \
             ' note: not required for current COVID-19 benefits.'
 
 
-class unable_to_work_for_medical_reasons(Variable):
+class person_is_unable_to_work_for_medical_reasons(Variable):
     value_type = bool
     entity = Person
-    definition = ETERNITY
+    definition_period = ETERNITY
     label = 'Asks whether the applicant is unable to work for medical reasons.'
 
 
 class regular_earnings_minimum_decrease(Variable):
     value_type = bool
     entity = Person
-    definition = ETERNITY
+    definition_period = ETERNITY
     label = 'Determines whether the applicants regular earnings have decreased' \
             ' by the minimum 40% required to claim benefits.'
 
     def formula(people, period, parameters):
         current_earnings = people('current_earnings', period)
+        regular_earnings = people('regular_earnings', period)
+        earnings_difference = current_earnings / regular_earnings
+        condition_minimum_decrease = earnings_difference >= 0.4
+        return where(condition_minimum_decrease, True, False)
+
+class person_is_eligible_for_EI_benefits(Variable):
+    value_type = bool
+    entity = Person
+    definition_period = ETERNITY
+    label = 'collates eligibility criteria into whether a person is eligible' \
+            ' to receive EI benefits within COVID 19 or not.'
+
+    def formula(people, period, parameters):
+    paid_into_EI = people('have_paid_into_employment_insurance', period)
+    is_unable_to_work = people('person_is_unable_to_work_for_medical_reasons', period)
+    worked_minimum_hours = people('person_has_worked_minimum_hours', period)
+    return paid_into_EI * is_unable_to_work * worked_minimum_hours
