@@ -15,19 +15,11 @@ today_date_and_time = np.datetime64(datetime.datetime.now())
 today = today_date_and_time.astype('datetime64[D]')
 
 
-class have_paid_into_employment_insurance(Variable):
+class has_paid_into_employment_insurance(Variable):
     value_type = bool
     entity = Person
     definition_period = ETERNITY
     label = 'Asks whether the person has paid into employment benefits.'
-
-
-class last_employment_insurance_payment_date(Variable):
-    value_type = date
-    entity = Person
-    definition_period = ETERNITY
-    label = 'Defines the last date at which the person has paid into' \
-            ' Employment Insurance.'
 
 
 class hours_worked_in_last_52_weeks(Variable):
@@ -50,19 +42,6 @@ class person_has_worked_minimum_hours(Variable):
         return where(condition_minimum_hours_worked, True, False)
 
 
-class date_52_weeks_ago(Variable):
-    value_type = date
-    entity = Person
-    definition_period = ETERNITY
-    label = 'Finds the date 52 weeks before today, for purposes of determining' \
-            ' the hours worked in the last 52 weeks.'
-
-    def formula(people, period, parameters):
-        todays_date = today
-        fifty_two_weeks_before_today = todays_date - np.timedelta64(52, 'W')
-        return fifty_two_weeks_before_today
-
-
 class has_record_of_employment(Variable):
     value_type = bool
     entity = Person
@@ -70,39 +49,13 @@ class has_record_of_employment(Variable):
     label = 'Asks whether the person has a previous record of employment.'
 
 
-class current_earnings(Variable):
-    value_type = float
-    entity = Person
-    definition_period = ETERNITY
-    label = 'Asks for the existing weekly earnings of the applicant.'
-
-
-class regular_earnings(Variable):
-    value_type = float
-    entity = Person
-    definition_period = ETERNITY
-    label = 'Asks for the regular weekly earnings of the applicant.'
-
-
-class potential_weekly_benefits(Variable):
-    value_type = float
-    entity = Person
-    definition_period = ETERNITY
-    label = 'Defines the maximum weekly benefit for the applicant.'
-
-    def formula(person, period, parameters):
-        regular_earnings = person('regular_earnings', period)
-        benefit_earnings = regular_earnings * 0.55
-        condition_maximum_benefit = (benefit_earnings > 573)
-        return where(condition_maximum_benefit, 573, benefit_earnings)
-
-
 class has_medical_certificate(Variable):
     value_type = bool
     entity = Person
     definition_period = ETERNITY
     label = 'asks whether the applicant has a current medical certificate.' \
-            ' note: not required for current COVID-19 benefits.'
+            ' note: not required for current COVID-19 benefits and is not.' \
+            ' currently included in eligibility criteria.'
 
 
 class person_is_unable_to_work_for_medical_reasons(Variable):
@@ -128,7 +81,7 @@ class person_is_eligible_for_EI_benefits(Variable):
             ' to receive EI benefits within COVID 19 or not.'
 
     def formula(people, period, parameters):
-        paid_into_EI = people('have_paid_into_employment_insurance', period)
+        paid_into_EI = people('has_paid_into_employment_insurance', period)
         is_unable_to_work = people('person_is_unable_to_work_for_medical_reasons', period)
         has_record_of_employment = people('has_record_of_employment', period)
         worked_minimum_hours = people('person_has_worked_minimum_hours', period)
