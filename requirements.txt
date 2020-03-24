@@ -15,7 +15,6 @@ mccabe==0.6.1
 more-itertools==8.2.0
 numexpr==2.7.1
 numpy==1.17.5
--e git+https://github.com/wombatwombat/OpenFisca-Canada.git@c808bbf11ee8ab030b3ee67ea6a15e7d2a5823bc#egg=OpenFisca_Canada
 OpenFisca-Core==34.7.2
 packaging==20.3
 pluggy==0.13.1
