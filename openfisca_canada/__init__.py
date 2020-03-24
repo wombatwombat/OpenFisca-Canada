@@ -27,7 +27,7 @@ class CountryTaxBenefitSystem(TaxBenefitSystem):
 
         # We define which variable, parameter and simulation example will be used in the OpenAPI specification
         self.open_api_config = {
-            "variable_example": "disposable_income",
+            "variable_example": "person_has_worked_minimum_hours",
             "parameter_example": "taxes.income_tax_rate",
             "simulation_example": couple,
             }
