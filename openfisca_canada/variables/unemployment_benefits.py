@@ -73,14 +73,14 @@ class has_record_of_employment(Variable):
 class current_earnings(Variable):
     value_type = float
     entity = Person
-    definition_period = YEAR
+    definition_period = ETERNITY
     label = 'Asks for the existing weekly earnings of the applicant.'
 
 
 class regular_earnings(Variable):
     value_type = float
     entity = Person
-    definition_period = YEAR
+    definition_period = ETERNITY
     label = 'Asks for the regular weekly earnings of the applicant.'
 
 
@@ -112,19 +112,12 @@ class person_is_unable_to_work_for_medical_reasons(Variable):
     label = 'Asks whether the applicant is unable to work for medical reasons.'
 
 
-class regular_earnings_minimum_decrease(Variable):
+class regular_earnings_decreased_by_40_percent_or_more(Variable):
     value_type = bool
     entity = Person
     definition_period = ETERNITY
     label = 'Determines whether the applicants regular earnings have decreased' \
             ' by the minimum 40% required to claim benefits.'
-
-    def formula(people, period, parameters):
-        current_earnings = people('current_earnings', period)
-        regular_earnings = people('regular_earnings', period)
-        earnings_difference = current_earnings / regular_earnings
-        condition_minimum_decrease = earnings_difference >= 0.4
-        return where(condition_minimum_decrease, True, False)
 
 
 class person_is_eligible_for_EI_benefits(Variable):
@@ -139,4 +132,5 @@ class person_is_eligible_for_EI_benefits(Variable):
         is_unable_to_work = people('person_is_unable_to_work_for_medical_reasons', period)
         has_record_of_employment = people('has_record_of_employment', period)
         worked_minimum_hours = people('person_has_worked_minimum_hours', period)
-        return paid_into_EI * is_unable_to_work * has_record_of_employment * worked_minimum_hours
+        minimum_income_decrease = people('regular_earnings_decreased_by_40_percent_or_more', period)
+        return paid_into_EI * is_unable_to_work * has_record_of_employment * worked_minimum_hours * minimum_income_decrease
