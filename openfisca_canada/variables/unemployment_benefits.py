@@ -33,7 +33,7 @@ class last_employment_insurance_payment_date(Variable):
 class hours_worked_in_last_52_weeks(Variable):
     value_type = float
     entity = Person
-    definition_period = YEAR
+    definition_period = ETERNITY
     label = 'Asks how many hours the claimaint has worked in the last 52 weeks.'
 
 
@@ -126,6 +126,7 @@ class regular_earnings_minimum_decrease(Variable):
         condition_minimum_decrease = earnings_difference >= 0.4
         return where(condition_minimum_decrease, True, False)
 
+
 class person_is_eligible_for_EI_benefits(Variable):
     value_type = bool
     entity = Person
@@ -134,7 +135,8 @@ class person_is_eligible_for_EI_benefits(Variable):
             ' to receive EI benefits within COVID 19 or not.'
 
     def formula(people, period, parameters):
-    paid_into_EI = people('have_paid_into_employment_insurance', period)
-    is_unable_to_work = people('person_is_unable_to_work_for_medical_reasons', period)
-    worked_minimum_hours = people('person_has_worked_minimum_hours', period)
-    return paid_into_EI * is_unable_to_work * worked_minimum_hours
+        paid_into_EI = people('have_paid_into_employment_insurance', period)
+        is_unable_to_work = people('person_is_unable_to_work_for_medical_reasons', period)
+        has_record_of_employment = people('has_record_of_employment', period)
+        worked_minimum_hours = people('person_has_worked_minimum_hours', period)
+        return paid_into_EI * is_unable_to_work * has_record_of_employment * worked_minimum_hours
