@@ -1,20 +1,32 @@
-
-# Core's dependencies
-openfisca_core[web-api]
-.[dev]
-
-#Biryani[datetimeconv] >= 0.10.8
-#dpath == 1.4.0
-#enum34 >= 1.1.6
-#future < 1.0.0
-#numpy >= 1.11, < 1.16
-#psutil==5.4.6
-#PyYAML >= 3.10
-#sortedcontainers==1.5.9
-#flask == 1.0.2
-#flask-cors ==3.0.7
-#gunicorn >= 19.7.1
-
-
-# Old requirements, to install stable core instead of git
-#
+attrs==19.3.0
+autopep8==1.5
+click==7.1.1
+dpath==1.5.0
+entrypoints==0.3
+flake8==3.7.9
+flake8-print==3.1.4
+Flask==1.1.1
+Flask-Cors==3.0.7
+gunicorn==20.0.4
+itsdangerous==1.1.0
+Jinja2==2.11.1
+MarkupSafe==1.1.1
+mccabe==0.6.1
+more-itertools==8.2.0
+numexpr==2.7.1
+numpy==1.17.5
+-e git+https://github.com/wombatwombat/OpenFisca-Canada.git@c808bbf11ee8ab030b3ee67ea6a15e7d2a5823bc#egg=OpenFisca_Canada
+OpenFisca-Core==34.7.2
+packaging==20.3
+pluggy==0.13.1
+psutil==5.7.0
+py==1.8.1
+pycodestyle==2.5.0
+pyflakes==2.1.1
+pyparsing==2.4.6
+pytest==5.4.1
+PyYAML==5.3.1
+six==1.14.0
+sortedcontainers==2.1.0
+wcwidth==0.1.9
+Werkzeug==1.0.0
