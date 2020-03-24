@@ -53,7 +53,7 @@
     regular_earnings_decreased_by_40_percent_or_more: True
   output:
     person_is_eligible_for_EI_benefits: False
-- name: Test 4 - Person is not eligible for benefit - has paid into employment
+- name: Test 5 - Person is not eligible for benefit - has paid into employment
     insurance, is unable to work for medical reasons, has a record of
     employment, has not worked over 600 hours in the past 52 weeks, and income has
     decreased by more than 40 percent
@@ -64,5 +64,18 @@
     has_record_of_employment: False
     hours_worked_in_last_52_weeks: 599
     regular_earnings_decreased_by_40_percent_or_more: True
+  output:
+    person_is_eligible_for_EI_benefits: False
+- name: Test 6 - Person is not eligible for benefit - has paid into employment
+    insurance, is unable to work for medical reasons, has a record of
+    employment, has not worked over 600 hours in the past 52 weeks, and income has
+    not decreased by more than 40 percent
+  period: 2020-01
+  input:
+    have_paid_into_employment_insurance: True
+    person_is_unable_to_work_for_medical_reasons: True
+    has_record_of_employment: False
+    hours_worked_in_last_52_weeks: 650
+    regular_earnings_decreased_by_40_percent_or_more: False
   output:
     person_is_eligible_for_EI_benefits: False

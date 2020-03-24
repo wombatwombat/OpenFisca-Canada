@@ -91,9 +91,9 @@ class potential_weekly_benefits(Variable):
     label = 'Defines the maximum weekly benefit for the applicant.'
 
     def formula(person, period, parameters):
-        current_earnings = person('current_earnings', period)
-        benefit_earnings = current_earnings * 0.55
-        condition_maximum_benefit = (current_earnings > 573)
+        regular_earnings = person('regular_earnings', period)
+        benefit_earnings = regular_earnings * 0.55
+        condition_maximum_benefit = (benefit_earnings > 573)
         return where(condition_maximum_benefit, 573, benefit_earnings)
 
 
