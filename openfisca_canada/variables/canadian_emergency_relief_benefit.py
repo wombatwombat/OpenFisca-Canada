@@ -48,14 +48,16 @@ class minimum_earnings_amount(Variable):
     definition_period = ETERNITY
     label = 'Asks whether the applicant has earned a minimum of $5,000  '
 
+
 class person_is_eligible_for_CERB(Variable):
     value_type = bool
     entity = Person
     definition_period = ETERNITY
     label = 'collates eligibility criteria into whether a person is eligible' \
             ' to receive the Canadian Emergency Relief Benefit'
+    end = '2020-10-31'
 
-    def formula(people, period, parameters):
+    def formula_2020_03_15(people, period, parameters):
         canadian_resident = people('is_a_resident_of_canada', period)
         believe_not_eligible = people('believe_they_cannot_get_EI', period)
         did_not_quit = people('has_not_quit_their_job_voluntarily', period)
