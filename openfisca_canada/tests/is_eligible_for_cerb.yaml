@@ -1,0 +1,78 @@
+
+# Test files describe situations and their expected outcomes
+# We can run this test on our command line using `openfisca-run-test age.yaml`
+
+- name: Test 1 - Person is eligible for the benefit, is a resident of Canada, 
+    believe they cannot get ei, has not quit their job, will lose income during
+    4 weeks of application period, and earned 5000 dollars 
+  period: 2020-01
+  input:
+    is_a_resident_of_canada : True
+    believe_they_cannot_get_EI: True
+    has_not_quit_their_job_voluntarily: True
+    will_lose_income_for_half_of_the_four_week_period: True
+    they_are_over_15_years_of_age: True 
+    minimum_earnings_amount: True
+  output:
+    person_is_eligible_for_CERB: True
+
+- name: Test 2
+  period: 2020-01
+  input:
+    is_a_resident_of_canada : True
+    believe_they_cannot_get_EI: False
+    has_not_quit_their_job_voluntarily: True
+    will_lose_income_for_half_of_the_four_week_period: True
+    they_are_over_15_years_of_age: True 
+    minimum_earnings_amount: True
+  output:
+    person_is_eligible_for_CERB: False
+
+- name: Test 3
+  period: 2020-01
+  input:
+    is_a_resident_of_canada : True
+    believe_they_cannot_get_EI: True
+    has_not_quit_their_job_voluntarily: False
+    will_lose_income_for_half_of_the_four_week_period: True
+    they_are_over_15_years_of_age: True 
+    minimum_earnings_amount: True
+  output:
+    person_is_eligible_for_CERB: False
+
+- name: Test 4
+  period: 2020-01
+  input:
+    is_a_resident_of_canada : True
+    believe_they_cannot_get_EI: True
+    has_not_quit_their_job_voluntarily: True
+    will_lose_income_for_half_of_the_four_week_period: False
+    they_are_over_15_years_of_age: True 
+    minimum_earnings_amount: True
+  output:
+    person_is_eligible_for_CERB: False
+
+
+- name: Test 5
+  period: 2020-01
+  input:
+    is_a_resident_of_canada : True
+    believe_they_cannot_get_EI: True
+    has_not_quit_their_job_voluntarily: True
+    will_lose_income_for_half_of_the_four_week_period: True
+    they_are_over_15_years_of_age: False 
+    minimum_earnings_amount: True
+  output:
+    person_is_eligible_for_CERB: False
+
+- name: Test 6
+  period: 2020-01
+  input:
+    is_a_resident_of_canada : True
+    believe_they_cannot_get_EI: True
+    has_not_quit_their_job_voluntarily: True
+    will_lose_income_for_half_of_the_four_week_period: True
+    they_are_over_15_years_of_age: True
+    minimum_earnings_amount: False
+  output:
+    person_is_eligible_for_CERB: False
