@@ -16,20 +16,20 @@ class is_a_resident_of_canada(Variable):
     label = 'Asks whether the applicant is a resident of Canada.'
 
 
-class  believe_they_cannot_get_EI(Variable):
+class believe_they_can_get_EI(Variable):
     value_type = bool
     entity = Person
     definition_period = ETERNITY
-    label = 'Asks whether the applicant believes they cannot recieve' \
+    label = 'Asks whether the applicant believes they can recieve' \
             'EI Regular or Sickness Benefits'
 
-class has_not_quit_their_job_voluntarily(Variable):
+class quit_their_job_voluntarily(Variable):
     value_type = bool
     entity = Person
     definition_period = ETERNITY
-    label = 'Asks whether the applicant did not quit their job'
+    label = 'Asks whether the applicant quit their job voluntarily'
 
-class will_lose_income_for_half_of_the_four_week_period(Variable):
+class has_lost_income_for_half_of_the_application_period(Variable):
     value_type = bool
     entity = Person
     definition_period = ETERNITY
@@ -59,9 +59,9 @@ class person_is_eligible_for_CERB(Variable):
 
     def formula_2020_03_15(people, period, parameters):
         canadian_resident = people('is_a_resident_of_canada', period)
-        believe_not_eligible = people('believe_they_cannot_get_EI', period)
-        did_not_quit = people('has_not_quit_their_job_voluntarily', period)
-        will_lose_income = people('will_lose_income_for_half_of_the_four_week_period', period)
+        believe_eligible = people('believe_they_can_get_EI', period)
+        quit_their_job = people('quit_their_job_voluntarily', period)
+        has_lost_income = people('has_lost_income_for_half_of_the_application_period', period)
         over_15 = people('they_are_over_15_years_of_age', period)
         earned_min_amount = people('minimum_earnings_amount', period)
-        return canadian_resident * believe_not_eligible * did_not_quit * will_lose_income * over_15 * earned_min_amount
+        return canadian_resident *  not_(believe_eligible) * not_(quit_their_job) * has_lost_income * over_15 * earned_min_amount

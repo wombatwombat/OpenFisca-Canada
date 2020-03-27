@@ -6,9 +6,9 @@
   period: 2020-03-15
   input:
     is_a_resident_of_canada : True
-    believe_they_cannot_get_EI: True
-    has_not_quit_their_job_voluntarily: True
-    will_lose_income_for_half_of_the_four_week_period: True
+    believe_they_can_get_EI: False
+    quit_their_job_voluntarily: False
+    has_lost_income_for_half_of_the_application_period: True
     they_are_over_15_years_of_age: True 
     minimum_earnings_amount: True
   output:
@@ -18,9 +18,9 @@
   period: 2020-10-31
   input:
     is_a_resident_of_canada : True
-    believe_they_cannot_get_EI: True
-    has_not_quit_their_job_voluntarily: True
-    will_lose_income_for_half_of_the_four_week_period: True
+    believe_they_can_get_EI: False
+    quit_their_job_voluntarily: False
+    has_lost_income_for_half_of_the_application_period: True
     they_are_over_15_years_of_age: True 
     minimum_earnings_amount: True
   output:
@@ -30,9 +30,9 @@
   period: 2020-03-15
   input:
     is_a_resident_of_canada : True
-    believe_they_cannot_get_EI: False
-    has_not_quit_their_job_voluntarily: True
-    will_lose_income_for_half_of_the_four_week_period: True
+    believe_they_can_get_EI: True
+    quit_their_job_voluntarily: False
+    has_lost_income_for_half_of_the_application_period: True
     they_are_over_15_years_of_age: True 
     minimum_earnings_amount: True
   output:
@@ -42,9 +42,9 @@
   period: 2020-03-15
   input:
     is_a_resident_of_canada : True
-    believe_they_cannot_get_EI: True
-    has_not_quit_their_job_voluntarily: False
-    will_lose_income_for_half_of_the_four_week_period: True
+    believe_they_can_get_EI: False
+    quit_their_job_voluntarily: True
+    has_lost_income_for_half_of_the_application_period: True
     they_are_over_15_years_of_age: True 
     minimum_earnings_amount: True
   output:
@@ -54,9 +54,9 @@
   period: 2020-03-15
   input:
     is_a_resident_of_canada : True
-    believe_they_cannot_get_EI: True
-    has_not_quit_their_job_voluntarily: True
-    will_lose_income_for_half_of_the_four_week_period: False
+    believe_they_can_get_EI: False
+    quit_their_job_voluntarily: False
+    has_lost_income_for_half_of_the_application_period: False
     they_are_over_15_years_of_age: True 
     minimum_earnings_amount: True
   output:
@@ -67,9 +67,9 @@
   period: 2020-03-15
   input:
     is_a_resident_of_canada : True
-    believe_they_cannot_get_EI: True
-    has_not_quit_their_job_voluntarily: True
-    will_lose_income_for_half_of_the_four_week_period: True
+    believe_they_can_get_EI: False
+    quit_their_job_voluntarily: False
+    has_lost_income_for_half_of_the_application_period: True
     they_are_over_15_years_of_age: False 
     minimum_earnings_amount: True
   output:
@@ -79,9 +79,9 @@
   period: 2020-03-15
   input:
     is_a_resident_of_canada : True
-    believe_they_cannot_get_EI: True
-    has_not_quit_their_job_voluntarily: True
-    will_lose_income_for_half_of_the_four_week_period: True
+    believe_they_can_get_EI: False
+    quit_their_job_voluntarily: False
+    has_lost_income_for_half_of_the_application_period: True
     they_are_over_15_years_of_age: True
     minimum_earnings_amount: False
   output:
@@ -91,9 +91,9 @@
   period: 2020-03-14
   input:
     is_a_resident_of_canada : True
-    believe_they_cannot_get_EI: True
-    has_not_quit_their_job_voluntarily: True
-    will_lose_income_for_half_of_the_four_week_period: True
+    believe_they_can_get_EI: False
+    quit_their_job_voluntarily: False
+    has_lost_income_for_half_of_the_application_period: True
     they_are_over_15_years_of_age: True
     minimum_earnings_amount: True
   output:
@@ -103,9 +103,9 @@
   period: 2020-11-01
   input:
     is_a_resident_of_canada : True
-    believe_they_cannot_get_EI: True
-    has_not_quit_their_job_voluntarily: True
-    will_lose_income_for_half_of_the_four_week_period: True
+    believe_they_can_get_EI: False
+    quit_their_job_voluntarily: False
+    has_lost_income_for_half_of_the_application_period: True
     they_are_over_15_years_of_age: True
     minimum_earnings_amount: True
   output:
