@@ -16,12 +16,11 @@ class is_a_resident_of_canada(Variable):
     label = 'Asks whether the applicant is a resident of Canada.'
 
 
-class believe_they_can_get_EI(Variable):
+class is_receiving_income_benefits_or_allowances(Variable):
     value_type = bool
     entity = Person
     definition_period = ETERNITY
-    label = 'Asks whether the applicant believes they can recieve' \
-            'EI Regular or Sickness Benefits'
+    label = 'Asks whether the applicant is currently receiving income, benefits, or allowances'
 
 class quit_their_job_voluntarily(Variable):
     value_type = bool
@@ -72,7 +71,7 @@ class person_is_eligible_for_CERB(Variable):
 
     def formula_2020_03_15(people, period):
         canadian_resident = people('is_a_resident_of_canada', period)
-        believe_eligible = people('believe_they_can_get_EI', period)
+        believe_eligible = people('is_receiving_income_benefits_or_allowances', period)
         quit_their_job = people('quit_their_job_voluntarily', period)
         has_lost_income = people('has_lost_income_for_half_of_the_application_period', period)
         over_15 = people('they_are_over_15_years_of_age', period)

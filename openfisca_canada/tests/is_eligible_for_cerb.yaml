@@ -6,7 +6,7 @@
   period: 2020-03-15
   input:
     is_a_resident_of_canada : True
-    believe_they_can_get_EI: False
+    is_receiving_income_benefits_or_allowances: False
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
     birth: 1980-06-23
@@ -18,7 +18,7 @@
   period: 2020-10-31
   input:
     is_a_resident_of_canada : True
-    believe_they_can_get_EI: False
+    is_receiving_income_benefits_or_allowances: False
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
     birth: 1980-01-01
@@ -30,7 +30,7 @@
   period: 2020-03-15
   input:
     is_a_resident_of_canada : True
-    believe_they_can_get_EI: True
+    is_receiving_income_benefits_or_allowances: True
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
     birth: 1980-01-01
@@ -42,7 +42,7 @@
   period: 2020-03-15
   input:
     is_a_resident_of_canada : True
-    believe_they_can_get_EI: False
+    is_receiving_income_benefits_or_allowances: False
     quit_their_job_voluntarily: True
     has_lost_income_for_half_of_the_application_period: True
     birth: 1980-01-01
@@ -54,7 +54,7 @@
   period: 2020-03-15
   input:
     is_a_resident_of_canada : True
-    believe_they_can_get_EI: False
+    is_receiving_income_benefits_or_allowances: False
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: False
     birth: 1980-01-01
@@ -67,7 +67,7 @@
   period: 2020-03-15
   input:
     is_a_resident_of_canada : True
-    believe_they_can_get_EI: False
+    is_receiving_income_benefits_or_allowances: False
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
     birth: 2005-03-16
@@ -79,7 +79,7 @@
   period: 2020-03-15
   input:
     is_a_resident_of_canada : True
-    believe_they_can_get_EI: False
+    is_receiving_income_benefits_or_allowances: False
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
     birth: 1980-01-01
@@ -91,7 +91,7 @@
   period: 2020-03-14
   input:
     is_a_resident_of_canada : True
-    believe_they_can_get_EI: False
+    is_receiving_income_benefits_or_allowances: False
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
     birth: 1980-01-01
@@ -103,7 +103,7 @@
   period: 2020-11-01
   input:
     is_a_resident_of_canada : True
-    believe_they_can_get_EI: False
+    is_receiving_income_benefits_or_allowances: False
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
     birth: 1980-01-01
