@@ -9,7 +9,7 @@
     believe_they_can_get_EI: False
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
-    they_are_over_15_years_of_age: True 
+    birth: 1980-06-23
     minimum_earnings_amount: True
   output:
     person_is_eligible_for_CERB: True
@@ -21,7 +21,7 @@
     believe_they_can_get_EI: False
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
-    they_are_over_15_years_of_age: True 
+    birth: 1980-01-01
     minimum_earnings_amount: True
   output:
     person_is_eligible_for_CERB: True
@@ -33,7 +33,7 @@
     believe_they_can_get_EI: True
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
-    they_are_over_15_years_of_age: True 
+    birth: 1980-01-01
     minimum_earnings_amount: True
   output:
     person_is_eligible_for_CERB: False
@@ -45,7 +45,7 @@
     believe_they_can_get_EI: False
     quit_their_job_voluntarily: True
     has_lost_income_for_half_of_the_application_period: True
-    they_are_over_15_years_of_age: True 
+    birth: 1980-01-01
     minimum_earnings_amount: True
   output:
     person_is_eligible_for_CERB: False
@@ -57,7 +57,7 @@
     believe_they_can_get_EI: False
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: False
-    they_are_over_15_years_of_age: True 
+    birth: 1980-01-01
     minimum_earnings_amount: True
   output:
     person_is_eligible_for_CERB: False
@@ -70,7 +70,7 @@
     believe_they_can_get_EI: False
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
-    they_are_over_15_years_of_age: False 
+    birth: 2005-03-16
     minimum_earnings_amount: True
   output:
     person_is_eligible_for_CERB: False
@@ -82,7 +82,7 @@
     believe_they_can_get_EI: False
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
-    they_are_over_15_years_of_age: True
+    birth: 1980-01-01
     minimum_earnings_amount: False
   output:
     person_is_eligible_for_CERB: False
@@ -94,7 +94,7 @@
     believe_they_can_get_EI: False
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
-    they_are_over_15_years_of_age: True
+    birth: 1980-01-01
     minimum_earnings_amount: True
   output:
     person_is_eligible_for_CERB: False
@@ -106,7 +106,7 @@
     believe_they_can_get_EI: False
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
-    they_are_over_15_years_of_age: True
+    birth: 1980-01-01
     minimum_earnings_amount: True
   output:
     person_is_eligible_for_CERB: False

@@ -39,8 +39,11 @@ class has_lost_income_for_half_of_the_application_period(Variable):
 class they_are_over_15_years_of_age(Variable):
     value_type = bool
     entity = Person
-    definition_period = ETERNITY
+    definition_period = DAY
     label = 'Asks whether the applicant is over the age of 15 at time of applying'
+
+    def formula(people, period, parameters):
+        return people('age', period) >= 15
 
 class minimum_earnings_amount(Variable): 
     value_type = bool
@@ -52,12 +55,12 @@ class minimum_earnings_amount(Variable):
 class person_is_eligible_for_CERB(Variable):
     value_type = bool
     entity = Person
-    definition_period = ETERNITY
+    definition_period = DAY
     label = 'collates eligibility criteria into whether a person is eligible' \
             ' to receive the Canadian Emergency Relief Benefit'
     end = '2020-10-31'
 
-    def formula_2020_03_15(people, period, parameters):
+    def formula_2020_03_15(people, period):
         canadian_resident = people('is_a_resident_of_canada', period)
         believe_eligible = people('believe_they_can_get_EI', period)
         quit_their_job = people('quit_their_job_voluntarily', period)
