@@ -1,0 +1,9 @@
+description: Minimum amount of earnings needed to be eligible for CERB
+metadata:
+  reference: https://law.gov.example/basic-income/amount
+  unit: currency-CAD
+values:
+  2020-03-15:
+    value: 5000.0
+    metadata:
+      reference: https://law.gov.example/basic-income/amount/2015-12

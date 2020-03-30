@@ -10,7 +10,7 @@
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
     birth: 1980-06-23
-    minimum_earnings_amount: True
+    earnings_amount: 5001
   output:
     person_is_eligible_for_CERB: True
 
@@ -22,7 +22,7 @@
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
     birth: 1980-01-01
-    minimum_earnings_amount: True
+    earnings_amount: 5001
   output:
     person_is_eligible_for_CERB: True
 
@@ -34,7 +34,7 @@
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
     birth: 1980-01-01
-    minimum_earnings_amount: True
+    earnings_amount: 5001
   output:
     person_is_eligible_for_CERB: False
 
@@ -46,7 +46,7 @@
     quit_their_job_voluntarily: True
     has_lost_income_for_half_of_the_application_period: True
     birth: 1980-01-01
-    minimum_earnings_amount: True
+    earnings_amount: 5001
   output:
     person_is_eligible_for_CERB: False
 
@@ -58,7 +58,7 @@
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: False
     birth: 1980-01-01
-    minimum_earnings_amount: True
+    earnings_amount: 5001
   output:
     person_is_eligible_for_CERB: False
 
@@ -71,7 +71,7 @@
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
     birth: 2005-03-16
-    minimum_earnings_amount: True
+    earnings_amount: 5001
   output:
     person_is_eligible_for_CERB: False
 
@@ -83,7 +83,7 @@
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
     birth: 1980-01-01
-    minimum_earnings_amount: False
+    earnings_amount: 4999
   output:
     person_is_eligible_for_CERB: False
 
@@ -95,7 +95,7 @@
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
     birth: 1980-01-01
-    minimum_earnings_amount: True
+    earnings_amount: 5001
   output:
     person_is_eligible_for_CERB: False
 
@@ -107,6 +107,6 @@
     quit_their_job_voluntarily: False
     has_lost_income_for_half_of_the_application_period: True
     birth: 1980-01-01
-    minimum_earnings_amount: True
+    earnings_amount: 5001
   output:
     person_is_eligible_for_CERB: False

@@ -45,11 +45,21 @@ class they_are_over_15_years_of_age(Variable):
     def formula(people, period, parameters):
         return people('age', period) >= 15
 
-class minimum_earnings_amount(Variable): 
+class earnings_amount(Variable):
+    value_type = float
+    entity = Person
+    definition_period = ETERNITY
+    label = 'The amount of money earned in the last year'
+
+class earned_more_than_minimum_amount(Variable): 
     value_type = bool
     entity = Person
     definition_period = ETERNITY
     label = 'Asks whether the applicant has earned a minimum of $5,000  '
+
+    def formula(people, period, parameters):
+        ea = people('earnings_amount', period)
+        return ea >= parameters(period).earnings.CERB_minimum
 
 
 class person_is_eligible_for_CERB(Variable):
@@ -66,5 +76,5 @@ class person_is_eligible_for_CERB(Variable):
         quit_their_job = people('quit_their_job_voluntarily', period)
         has_lost_income = people('has_lost_income_for_half_of_the_application_period', period)
         over_15 = people('they_are_over_15_years_of_age', period)
-        earned_min_amount = people('minimum_earnings_amount', period)
+        earned_min_amount = people('earned_more_than_minimum_amount', period)
         return canadian_resident *  not_(believe_eligible) * not_(quit_their_job) * has_lost_income * over_15 * earned_min_amount
