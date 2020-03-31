@@ -1,0 +1,112 @@
+
+# Test files describe situations and their expected outcomes
+# We can run this test on our command line using `openfisca-run-test age.yaml`
+
+- name: Test 1 - Is Eligible on first day 
+  period: 2020-03-15
+  input:
+    is_a_resident_of_canada : True
+    is_receiving_income_benefits_or_allowances: False
+    quit_their_job_voluntarily: False
+    has_lost_income_for_half_of_the_application_period: True
+    birth: 1980-06-23
+    earnings_amount: 5001
+  output:
+    person_is_eligible_for_CERB: True
+
+- name: Test 2 - Is Eligible on last day 
+  period: 2020-10-31
+  input:
+    is_a_resident_of_canada : True
+    is_receiving_income_benefits_or_allowances: False
+    quit_their_job_voluntarily: False
+    has_lost_income_for_half_of_the_application_period: True
+    birth: 1980-01-01
+    earnings_amount: 5001
+  output:
+    person_is_eligible_for_CERB: True
+
+- name: Test 3 - believe they are eligible for EI
+  period: 2020-03-15
+  input:
+    is_a_resident_of_canada : True
+    is_receiving_income_benefits_or_allowances: True
+    quit_their_job_voluntarily: False
+    has_lost_income_for_half_of_the_application_period: True
+    birth: 1980-01-01
+    earnings_amount: 5001
+  output:
+    person_is_eligible_for_CERB: False
+
+- name: Test 4 - Quit their job
+  period: 2020-03-15
+  input:
+    is_a_resident_of_canada : True
+    is_receiving_income_benefits_or_allowances: False
+    quit_their_job_voluntarily: True
+    has_lost_income_for_half_of_the_application_period: True
+    birth: 1980-01-01
+    earnings_amount: 5001
+  output:
+    person_is_eligible_for_CERB: False
+
+- name: Test 5 - Didn't lose half their income in the four week period they applied for
+  period: 2020-03-15
+  input:
+    is_a_resident_of_canada : True
+    is_receiving_income_benefits_or_allowances: False
+    quit_their_job_voluntarily: False
+    has_lost_income_for_half_of_the_application_period: False
+    birth: 1980-01-01
+    earnings_amount: 5001
+  output:
+    person_is_eligible_for_CERB: False
+
+
+- name: Test 6 - Is younger then 15 years of age.
+  period: 2020-03-15
+  input:
+    is_a_resident_of_canada : True
+    is_receiving_income_benefits_or_allowances: False
+    quit_their_job_voluntarily: False
+    has_lost_income_for_half_of_the_application_period: True
+    birth: 2005-03-16
+    earnings_amount: 5001
+  output:
+    person_is_eligible_for_CERB: False
+
+- name: Test 7 - Didn't earn minimum amount in past year
+  period: 2020-03-15
+  input:
+    is_a_resident_of_canada : True
+    is_receiving_income_benefits_or_allowances: False
+    quit_their_job_voluntarily: False
+    has_lost_income_for_half_of_the_application_period: True
+    birth: 1980-01-01
+    earnings_amount: 4999
+  output:
+    person_is_eligible_for_CERB: False
+
+- name: Test 8 - Applied before 2020-03-15
+  period: 2020-03-14
+  input:
+    is_a_resident_of_canada : True
+    is_receiving_income_benefits_or_allowances: False
+    quit_their_job_voluntarily: False
+    has_lost_income_for_half_of_the_application_period: True
+    birth: 1980-01-01
+    earnings_amount: 5001
+  output:
+    person_is_eligible_for_CERB: False
+
+- name: Test 9 - Applied after 2020-10-31
+  period: 2020-11-01
+  input:
+    is_a_resident_of_canada : True
+    is_receiving_income_benefits_or_allowances: False
+    quit_their_job_voluntarily: False
+    has_lost_income_for_half_of_the_application_period: True
+    birth: 1980-01-01
+    earnings_amount: 5001
+  output:
+    person_is_eligible_for_CERB: False
